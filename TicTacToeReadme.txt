@@ -22,7 +22,7 @@ dynamic vector of characters for the board and change the values from whatever m
 
 
 4. What is your approach? Would you put TicTacToe into a class? Justify your answer.
-Yes put tic tac toe into a class
+Yes put tic tac toe into a class. We want the board state with the gui in a different class from the code for the user input and the computer's code for movements to prevent leaks and any bugs from crossover. 
 
 5. How will the computer decide where to go? Can you merely use a random number if the
 computer is playing intelligently? Develop the logic (pseudocode) for this question.
