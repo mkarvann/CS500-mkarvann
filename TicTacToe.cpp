@@ -9,5 +9,5 @@ private:
     char checkWinner();
     void makeMove(char player, int row, int col);
     int minimax(bool isMaximizing);
-    pair<int, int> findBestMove();
+    findBestMove();
 };
