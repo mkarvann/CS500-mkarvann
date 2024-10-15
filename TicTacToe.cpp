@@ -7,7 +7,7 @@ private:
     vector<vector<char>> board;
     void printBoard();
     char checkWinner();
-    void makeMove(char player, int row, int col);
+    void makeMove(int row, int col);
     int minimax(bool isMaximizing);
     findBestMove();
 };
