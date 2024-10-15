@@ -1,0 +1,94 @@
+### Event Class
+
+**`getDetails`**: A pure virtual function, making `Event` an abstract class. It must be overridden in derived classes to provide details specific to each event type.
+**`isUpcoming`**: Determines if the event is yet to occur (implementation is not shown here).
+**Getter functions**: Return the event's name, date, location, and a count of attendees.
+**Attendee management functions**: Allow for adding and removing attendees, as well as checking if a specific person is attending.
+
+Protected Member Variables store fundamental information about the event, encapsulating its name, date, location, and the attendees.
+
+### Workshop Class
+
+**Purpose**: Represents a specific type of event: a workshop.
+**Constructor**: Inherits from `Event` and initializes the workshop's specific properties, `duration` and `instructor`.
+**`getDetails`**: This method will provide specific details about the workshop, requiring an implementation.
+
+### Concert Class
+
+**Purpose**: Represents a concert event.
+Similar to `Workshop`, it has a constructor for initializing concert-specific properties: `bandName` and `genre`.
+
+### Conference Class
+
+**Purpose**: Represents a conference event.
+Contains additional properties: a list of speakers and topics, initialized through its constructor.
+
+### EventFactory Class
+
+**Purpose**: The `EventFactory` class is an abstract base class designed to provide a common interface for creating different types of `Event` objects. By making it abstract, it enforces that derived classes must implement the `createEvent()` function.
+**`createEvent`**: This is a pure virtual function, meaning any class that inherits from `EventFactory` must provide an implementation for this function. The function returns a `std::unique_ptr` to an `Event`, ensuring that the created event is managed with automatic memory management (i.e., it will be deleted when no longer needed).
+**Destructor**: The default virtual destructor ensures that derived class destructors are called correctly, enabling proper cleanup of resources.
+
+### EventManager Class
+
+**Event Management**: The `EventManager` class encapsulates the functionality needed to manage events and users effectively. It provides a clear and structured interface for adding events and users, managing RSVPs, and notifying users.
+**Search Strategy**: The inclusion of the `SearchStrategy` class allows for flexible searching of events based on various criteria, enhancing the system's usability.
+
+### User Class
+
+**User Management**: The `User` class encapsulates the user-related functionalities in the event management system, allowing for the management of user information and event RSVPs.
+**Notification Preferences**: The use of the `NotificationFrequency` enum allows users to customize how often they receive notifications about events, enhancing user experience.
+**Dynamic RSVP List**: The `rsvpEvents` vector provides a flexible way to manage the list of events a user has RSVP'd to, supporting dynamic additions and removals.
+
+### NotificationSystem Class
+
+**Dynamic Notification**: The use of `std::shared_ptr` for both users and events allows for dynamic management of memory and resource ownership, making it easier to share objects across different parts of the application.
+**Modular Design**: The separation of concerns allows the `NotificationSystem` to focus solely on notifying users while relying on the `User` and `Event` classes to encapsulate user and event information, respectively.
+
+### SearchStrategy Class
+
+**Strategy Design Pattern**: This code utilizes the Strategy design pattern, allowing the selection of an algorithm (search strategy) at runtime. Each search criterion is encapsulated in its own class that implements the `SearchStrategy` interface.
+**Extensibility**: New search strategies can be easily added by creating additional classes that derive from `SearchStrategy` and implementing the `match` method. This design promotes flexibility and extensibility in the codebase.
+
+
+**Clone or Download the Code**:
+
+If the code is hosted in a version control repository (like GitHub), clone it using:
+
+git clone <repository-url>
+
+cd path/to/EventManagementSystem
+
+g++ -o event_manager main.cpp event.cpp user.cpp notification_system.cpp search_strategy.cpp event_manager.cpp
+
+./main
+
+**with the Makefile**:
+
+Run the following command to compile the code and generate the executable:
+
+make
+
+make run
+
+If you want to remove the object files and the executable, run:
+
+make clean
+
+
+**Code Reusability**: Shared code is centralized in the base class, reducing redundancy.
+**Polymorphism**: Clients can interact with different event types through a common interface, allowing for easier management and manipulation of events.
+
+**Dynamic Memory Management**: Pointers allow for dynamic allocation of objects, which is crucial when the exact number of events or users isn’t known at compile time.
+**Shared Ownership**: Using `std::shared_ptr` facilitates shared ownership of objects. This means multiple parts of the program can safely reference the same event or user without worrying about memory management issues (such as dangling pointers).
+**Flexibility**: Pointers provide the flexibility to manage different derived classes of `Event` or `User`, allowing for polymorphic behavior while storing these objects in a single container.
+
+
+**Separation of Concerns**: It separates the instantiation of objects from their usage, which promotes cleaner code and reduces dependencies between components.
+**Scalability**: New event types can be added easily by creating new factory classes without modifying existing code, adhering to the Open/Closed Principle.
+**Maintainability**: Design patterns provide a structured approach to solving common problems, making the codebase easier to understand and maintain for other developers.
+
+**Complexity in Class Relationships**: Managing the relationships between various classes, especially with inheritance and polymorphism, can become complex. Ensuring that derived classes implement their behaviors correctly while maintaining a clean interface requires careful design.
+**Memory Management**: Although `std::shared_ptr` simplifies memory management, ensuring that there are no memory leaks or unintended object lifetimes can be challenging. Debugging these issues can be difficult, especially in larger applications.
+**Implementing Design Patterns**: While design patterns improve code structure, they also require an understanding of their principles and correct implementation. Misuse or over-complication can lead to unnecessary complexity in the codebase.
+**Testing and Debugging**: Ensuring that each event type behaves correctly and that the RSVP system functions as intended can require extensive testing. Additionally, integrating different components (like notifications) may reveal unforeseen issues.
