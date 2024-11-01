@@ -1,0 +1,53 @@
+Start testing: Nov 01 18:39 CDT
+----------------------------------------------------------
+1/1 Testing: myStringTest
+1/1 Test: myStringTest
+Command: "/home/manojkarvannan/Lab09/build/myStringTest"
+Directory: /home/manojkarvannan/Lab09/build
+"myStringTest" start time: Nov 01 18:39 CDT
+Output:
+----------------------------------------------------------
+Running main() from /home/manojkarvannan/Lab09/googletest/googletest/src/gtest_main.cc
+[==========] Running 13 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 13 tests from MyStringTest
+[ RUN      ] MyStringTest.DefaultConstructor
+[       OK ] MyStringTest.DefaultConstructor (0 ms)
+[ RUN      ] MyStringTest.ConstructorWithString
+[       OK ] MyStringTest.ConstructorWithString (0 ms)
+[ RUN      ] MyStringTest.CopyConstructor
+[       OK ] MyStringTest.CopyConstructor (0 ms)
+[ RUN      ] MyStringTest.AssignmentOperator
+[       OK ] MyStringTest.AssignmentOperator (0 ms)
+[ RUN      ] MyStringTest.SubstringBasic
+[       OK ] MyStringTest.SubstringBasic (0 ms)
+[ RUN      ] MyStringTest.SubstringEdgeCases
+[       OK ] MyStringTest.SubstringEdgeCases (0 ms)
+[ RUN      ] MyStringTest.Concatenation
+[       OK ] MyStringTest.Concatenation (0 ms)
+[ RUN      ] MyStringTest.AppendString
+[       OK ] MyStringTest.AppendString (0 ms)
+[ RUN      ] MyStringTest.AppendChar
+[       OK ] MyStringTest.AppendChar (0 ms)
+[ RUN      ] MyStringTest.ArrayAccess
+[       OK ] MyStringTest.ArrayAccess (0 ms)
+[ RUN      ] MyStringTest.ComparisonOperators
+[       OK ] MyStringTest.ComparisonOperators (0 ms)
+[ RUN      ] MyStringTest.StreamOutput
+[       OK ] MyStringTest.StreamOutput (0 ms)
+[ RUN      ] MyStringTest.EmptyStringOperations
+[       OK ] MyStringTest.EmptyStringOperations (0 ms)
+[----------] 13 tests from MyStringTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 13 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 13 tests.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"myStringTest" end time: Nov 01 18:39 CDT
+"myStringTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 01 18:39 CDT
