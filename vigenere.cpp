@@ -1,4 +1,5 @@
 #include "vigenere.h"
+#include <iostream>
 #include <cctype>
 
 // Constructor
@@ -64,4 +65,36 @@ bool Vigenere::isEncrypted(std::string encryptedMsg, std::string decryptedMessag
 // Update the key
 void Vigenere::setKey(std::string key) {
     this->key = key;
+}
+
+
+int main() {
+    // Create a Vigenère cipher object with a key
+    std::string key = "HJK";  // Use a simple key for testing
+    Vigenere cipher(key);
+    
+    // Define a message to encrypt
+    std::string message = "WAR";
+    
+    // Encrypt the message
+    std::string encryptedMessage = cipher.encrypt(message);
+    
+    // Output the original and encrypted message
+    std::cout << "Original Message: " << message << std::endl;
+    std::cout << "Encrypted Message: " << encryptedMessage << std::endl;
+    
+    // Decrypt the message to check the reverse process
+    std::string decryptedMessage = cipher.decrypt(encryptedMessage);
+    
+    // Output the decrypted message to verify it matches the original
+    std::cout << "Decrypted Message: " << decryptedMessage << std::endl;
+
+    // Check if the encryption and decryption worked correctly
+    if (decryptedMessage == message) {
+        std::cout << "Encryption and Decryption are working correctly!" << std::endl;
+    } else {
+        std::cout << "Something went wrong in the encryption/decryption process." << std::endl;
+    }
+    
+    return 0;
 }

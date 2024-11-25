@@ -74,13 +74,13 @@ Decrypts a message using the Vigenère cipher.
 
 
 \begin{DoxyParams}{Parameters}
-{\em msg} & The encrypted message to decrypt (must be uppercase letters) \\
+{\em msg} & The encrypted message to decrypt (must be uppercase letters). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The decrypted message in uppercase letters
+The decrypted message in uppercase letters.
 \end{DoxyReturn}
-Each letter in the encrypted message is shifted backward in the alphabet by the position value of the corresponding letter in the key \mbox{\Hypertarget{classVigenere_af4c61150d58a7cf06c3e32e861f3f10f}\label{classVigenere_af4c61150d58a7cf06c3e32e861f3f10f}} 
+This function shifts each letter of the encrypted message backward in the alphabet by the position value of the corresponding letter in the repeated key. \mbox{\Hypertarget{classVigenere_af4c61150d58a7cf06c3e32e861f3f10f}\label{classVigenere_af4c61150d58a7cf06c3e32e861f3f10f}} 
 \index{Vigenere@{Vigenere}!encrypt@{encrypt}}
 \index{encrypt@{encrypt}!Vigenere@{Vigenere}}
 \doxysubsubsection{\texorpdfstring{encrypt()}{encrypt()}}
@@ -92,13 +92,13 @@ Encrypts a message using the Vigenère cipher.
 
 
 \begin{DoxyParams}{Parameters}
-{\em msg} & The message to encrypt (must be uppercase letters) \\
+{\em msg} & The message to encrypt (must be uppercase letters). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The encrypted message in uppercase letters
+The encrypted message in uppercase letters.
 \end{DoxyReturn}
-Each letter in the message is shifted forward in the alphabet by the position value of the corresponding letter in the key \mbox{\Hypertarget{classVigenere_a25f202a6e81315673ac4d75e3bf44b79}\label{classVigenere_a25f202a6e81315673ac4d75e3bf44b79}} 
+This function shifts each letter of the message forward in the alphabet by the position value of the corresponding letter in the repeated key. \mbox{\Hypertarget{classVigenere_a25f202a6e81315673ac4d75e3bf44b79}\label{classVigenere_a25f202a6e81315673ac4d75e3bf44b79}} 
 \index{Vigenere@{Vigenere}!isEncrypted@{isEncrypted}}
 \index{isEncrypted@{isEncrypted}!Vigenere@{Vigenere}}
 \doxysubsubsection{\texorpdfstring{isEncrypted()}{isEncrypted()}}
@@ -110,15 +110,15 @@ Verifies if an encrypted message corresponds to a decrypted message.
 
 
 \begin{DoxyParams}{Parameters}
-{\em encrypted\+Msg} & The encrypted version of the message \\
+{\em encrypted\+Msg} & The encrypted version of the message. \\
 \hline
-{\em decrypted\+Message} & The decrypted version of the message \\
+{\em decrypted\+Message} & The decrypted version of the message. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the encrypted message matches the decrypted message when decrypted, false otherwise
+true if the encrypted message matches the decrypted message when decrypted, false otherwise.
 \end{DoxyReturn}
-This function encrypts the decrypted\+Message and compares it with the provided encrypted\+Msg to verify the encryption/decryption process \mbox{\Hypertarget{classVigenere_a56fc304a543d347924432c61bc9780a1}\label{classVigenere_a56fc304a543d347924432c61bc9780a1}} 
+This function decrypts the encrypted message and compares it with the provided decrypted\+Message to verify the encryption/decryption process. \mbox{\Hypertarget{classVigenere_a56fc304a543d347924432c61bc9780a1}\label{classVigenere_a56fc304a543d347924432c61bc9780a1}} 
 \index{Vigenere@{Vigenere}!setKey@{setKey}}
 \index{setKey@{setKey}!Vigenere@{Vigenere}}
 \doxysubsubsection{\texorpdfstring{setKey()}{setKey()}}
@@ -130,10 +130,10 @@ Changes the encryption/decryption key.
 
 
 \begin{DoxyParams}{Parameters}
-{\em key} & The new key to use (must be uppercase letters)\\
+{\em key} & The new key to use (must be uppercase letters).\\
 \hline
 \end{DoxyParams}
-Updates the key used by the cipher for all subsequent encryption and decryption operations 
+Updates the key used by the cipher for all subsequent encryption and decryption operations. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
