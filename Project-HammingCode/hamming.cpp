@@ -55,29 +55,38 @@ void HammingCode::decodeFile(const std::string& filename) {
 }
 
 std::vector<int> HammingCode::decodeWord(const std::vector<int>& code) {
-    std::vector<int> modifiableCode = code; // Create a copy to modify
+    if (code.size() != 7) {
+        throw std::runtime_error("Invalid code length: " + vectorToString(code));
+    }
 
-    std::vector<int> syndrome = matrixMultiplyMod2(H, modifiableCode);
+    // Check for all-one code, which is uncorrectable
+    if (std::all_of(code.begin(), code.end(), [](int bit) { return bit == 1; })) {
+        throw std::runtime_error("Multiple errors detected, cannot correct.");
+    }
 
+    // Create a copy to modify
+    std::vector<int> modifiedCode = code;
+
+    std::vector<int> syndrome = matrixMultiplyMod2(H, modifiedCode);
+
+    // Calculate the error position
     int errorPosition = 0;
     for (int i = 0; i < 3; ++i) {
         errorPosition |= (syndrome[i] << (2 - i));
     }
 
-    // If errorPosition > 0, it means there is an error in the codeword
+    // Correct the error if necessary
     if (errorPosition > 0) {
         if (errorPosition <= 7) {
-            correctError(modifiableCode, errorPosition);  // Correct the error
+            modifiedCode[errorPosition - 1] ^= 1;
         } else {
-            // If errorPosition exceeds 7, we cannot correct multiple errors
-            throw std::runtime_error("Multiple errors detected, cannot correct.");
+            throw std::runtime_error("Invalid syndrome, cannot correct error.");
         }
     }
 
-    return {modifiableCode[2], modifiableCode[4], modifiableCode[5], modifiableCode[6]}; // Extract data bits
+    // Extract the data bits
+    return {modifiedCode[0], modifiedCode[1], modifiedCode[3], modifiedCode[4]};
 }
-
-
 
 void HammingCode::correctError(std::vector<int>& code, int errorPosition) {
     // Flip the bit at the error position (adjusted for 1-based indexing)
